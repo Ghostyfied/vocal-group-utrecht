@@ -1,0 +1,5 @@
+<template>
+  <svg class="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+    <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</template>
