@@ -72,7 +72,6 @@ const { booking } = site
 
 .occasion:hover {
   border-color: var(--c-accent);
-  background: var(--c-burgundy);
   transform: translateY(-4px);
 }
 
@@ -81,11 +80,6 @@ const { booking } = site
   font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--c-accent-bright);
-  transition: color 0.3s ease;
-}
-
-.occasion:hover .occasion__number {
-  color: var(--c-glow);
 }
 
 .occasion__title {

@@ -141,7 +141,7 @@ const instagram = site.socials.find((social) => social.name === 'Instagram')
 
 .event--link:hover {
   padding-inline: 1rem;
-  background: rgb(244 236 226 / 0.04);
+  background: color-mix(in srgb, var(--c-text) 4%, transparent);
 }
 
 .event__date {

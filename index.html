@@ -6,11 +6,20 @@
     <title>Vocal Group Utrecht — close harmony a capella</title>
     <meta
       name="description"
-      content="Vocal Group Utrecht is een close harmony a-capellagroep van zo'n zestien zangers. Pop in eigen arrangementen — op het podium, op je bruiloft of op je evenement."
+      content="Vocal Group Utrecht is een close harmony a-capellagroep van achttien zangers. Pop in eigen arrangementen — op het podium, op je bruiloft of op je evenement."
     />
     <meta name="robots" content="%VITE_ROBOTS%" />
     <meta name="theme-color" content="#0c0909" />
-    <meta name="color-scheme" content="dark" />
+    <script>
+      // Apply the chosen theme before first paint (see src/composables/useTheme.ts).
+      ;(function () {
+        try {
+          var fromUrl = new URLSearchParams(location.search).get('thema')
+          var theme = fromUrl || localStorage.getItem('vgu-thema')
+          if (theme === 'donker') document.documentElement.dataset.theme = 'dark'
+        } catch (e) {}
+      })()
+    </script>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 
     <meta property="og:type" content="website" />
@@ -19,7 +28,7 @@
     <meta property="og:title" content="Vocal Group Utrecht — close harmony a capella" />
     <meta
       property="og:description"
-      content="Zestien stemmen, nul instrumenten. Pop in eigen arrangementen."
+      content="18 stemmen. A capella. One wall of sound."
     />
     <meta property="og:url" content="%VITE_SITE_URL%/" />
     <meta property="og:image" content="%VITE_SITE_URL%/og-image.jpg" />
@@ -30,10 +39,10 @@
   <body>
     <div id="app"></div>
     <noscript>
-      <p style="padding: 2rem; font-family: sans-serif; color: #f4ece2">
+      <p style="padding: 2rem; font-family: sans-serif">
         Vocal Group Utrecht — close harmony a capella uit Utrecht. Zet JavaScript aan om deze site
         te bekijken, of volg ons op
-        <a href="https://www.instagram.com/vocalgrouputrecht/" style="color: #f0604f">Instagram</a>.
+        <a href="https://www.instagram.com/vocalgrouputrecht/" >Instagram</a>.
       </p>
     </noscript>
     <script type="module" src="/src/main.ts"></script>

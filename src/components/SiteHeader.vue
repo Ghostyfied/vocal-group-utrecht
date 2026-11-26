@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="header" :class="{ 'is-scrolled': scrolled, 'is-open': menuOpen }">
+  <header class="header" :class="{ 'is-scrolled': scrolled, 'is-open': menuOpen, 'on-dark': !scrolled && !menuOpen }">
     <div class="container header__bar">
       <a class="brand" href="#top" :aria-label="`${site.name} — naar boven`" @click="menuOpen = false">
         <span class="light" aria-hidden="true" />
@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
 }
 
 .header.is-scrolled:not(.is-open) {
-  background: rgb(12 9 9 / 0.78);
+  background: color-mix(in srgb, var(--c-bg) 80%, transparent);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   backdrop-filter: blur(16px) saturate(1.4);
   border-bottom-color: var(--c-line);

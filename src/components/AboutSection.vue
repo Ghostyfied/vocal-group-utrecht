@@ -51,6 +51,14 @@ const { about } = site
 </template>
 
 <style scoped>
+.about {
+  position: relative;
+  margin-top: calc(-1 * var(--sheet-radius));
+  border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+  background: var(--c-bg);
+  transition: background-color 0.4s ease;
+}
+
 .about__grid {
   display: grid;
   gap: 2.5rem;

@@ -1,20 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { mailto, site } from '../content/site'
 import ArrowIcon from './ArrowIcon.vue'
 
-const { join } = site
+const { join, vacancy } = site
+const variant = computed(() => (vacancy.open ? join.open : join.closed))
 </script>
 
 <template>
   <section id="meezingen" class="join">
     <div class="container">
-      <div v-reveal class="join__panel">
+      <div v-reveal class="join__panel on-dark">
         <div class="join__main">
           <p class="eyebrow join__eyebrow"><span class="light" aria-hidden="true" />{{ join.eyebrow }}</p>
-          <h2 class="section-title">{{ join.title }}</h2>
-          <p class="join__text">{{ join.text }}</p>
+          <h2 class="section-title">{{ variant.title }}</h2>
+          <p class="join__text">{{ variant.text }}</p>
           <a class="btn btn--light" :href="mailto(join.mailSubject)">
-            {{ join.cta }}
+            {{ variant.cta }}
             <ArrowIcon />
           </a>
         </div>
@@ -26,7 +28,7 @@ const { join } = site
               <dd>{{ fact.value }}</dd>
             </div>
           </dl>
-          <p class="join__note">{{ join.note }}</p>
+          <p class="join__note">{{ variant.note }}</p>
         </div>
       </div>
     </div>

@@ -25,9 +25,14 @@ npm run build
 All texts, links and agenda items live in one file: [`src/content/site.ts`](src/content/site.ts). The components only handle layout.
 
 - **Agenda** — add an entry to `agenda.items` with a `date` in `YYYY-MM-DD` form. Shows are sorted automatically and move to "Eerder" by themselves once the date has passed. Remove the entries marked `placeholder: true` when real dates are in.
-- **Call-out in the hero** ("Gezocht: …") — edit `callout`, or set `callout.enabled` to `false` to hide it.
+- **Vacancy** ("Gezocht: lage bas") — edit `vacancy.voice`, or set `vacancy.open` to `false` once the spot is filled: the call-out in the hero disappears and "Zing mee" switches to the general text in `join.closed`.
+- **Video** — set `video.youtubeId` to the part after `youtu.be/` in the link. The player only connects to YouTube after the visitor presses play.
 - **Conductor portrait** — import an image and set `conductor.photo`; until then a monogram tile is shown.
 - **Photos** — optimised WebP files in `src/assets/images/`, referenced from the section components.
+
+## Colour themes
+
+The site ships with a light theme (default) and a dark one. Visitors can switch in the footer; `?thema=donker` or `?thema=licht` in the URL selects one directly, which is handy for sharing a specific version. Both are defined as colour tokens at the top of `src/styles/main.css`. The hero, the "Zing mee" panel, the contact section and the footer are dark in both themes (class `on-dark`), because the stage photos are.
 
 ## Structure
 
@@ -37,7 +42,7 @@ src/
   components/           one component per page section
   styles/main.css       design tokens (colours, type, spacing) and shared styles
   directives/reveal.ts  v-reveal scroll animation
-  composables/          active-section tracking for the navigation
+  composables/          active-section tracking for the navigation, theme switch
 ```
 
 ## Deployment

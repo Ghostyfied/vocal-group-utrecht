@@ -5,11 +5,11 @@ import hero900 from '../assets/images/stage-solo-900.webp'
 import hero1600 from '../assets/images/stage-solo-1600.webp'
 import hero2400 from '../assets/images/stage-solo-2400.webp'
 
-const { hero, callout } = site
+const { hero, vacancy } = site
 </script>
 
 <template>
-  <section id="top" class="hero">
+  <section id="top" class="hero on-dark">
     <div class="hero__media" aria-hidden="true">
       <img
         :src="hero1600"
@@ -45,9 +45,9 @@ const { hero, callout } = site
             </a>
             <a class="btn btn--ghost" :href="`#${hero.secondaryCta.target}`">{{ hero.secondaryCta.label }}</a>
           </div>
-          <a v-if="callout.enabled" class="callout" :href="`#${callout.target}`">
-            <span class="callout__label">{{ callout.label }}</span>
-            <span>{{ callout.text }}</span>
+          <a v-if="vacancy.open" class="callout" href="#meezingen">
+            <span class="callout__label">{{ vacancy.label }}</span>
+            <span>{{ vacancy.voice }}</span>
             <ArrowIcon />
           </a>
         </div>
@@ -64,7 +64,8 @@ const { hero, callout } = site
   min-height: 100vh;
   min-height: 100svh;
   padding-top: calc(var(--header-height) + 2rem);
-  padding-bottom: clamp(2rem, 5vw, 4rem);
+  padding-bottom: calc(clamp(2rem, 5vw, 4rem) + var(--sheet-radius));
+  background: var(--c-bg);
   overflow: hidden;
   isolation: isolate;
 }
@@ -132,7 +133,12 @@ const { hero, callout } = site
 }
 
 .hero__lede {
-  max-width: 34rem;
+  max-width: 42rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .hero__aside {
@@ -209,7 +215,7 @@ const { hero, callout } = site
 
 @media (min-width: 62rem) {
   .hero__foot {
-    grid-template-columns: minmax(0, 34rem) auto;
+    grid-template-columns: minmax(0, 42rem) auto;
     align-items: end;
     justify-content: space-between;
   }

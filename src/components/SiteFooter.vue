@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { site } from '../content/site'
+import { useTheme, type Theme } from '../composables/useTheme'
+
+const { theme } = useTheme()
+const themes: { value: Theme; label: string }[] = [
+  { value: 'licht', label: 'Licht' },
+  { value: 'donker', label: 'Donker' },
+]
 
 const year = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="footer">
+  <footer class="footer on-dark">
     <div class="container footer__inner">
       <p class="footer__brand">
         <span class="light" aria-hidden="true" />
@@ -22,6 +29,19 @@ const year = new Date().getFullYear()
 
       <p class="footer__legal">
         <span>© {{ year }} {{ site.name }}</span>
+        <span class="theme-switch" role="group" aria-label="Kleurthema">
+          <span class="theme-switch__label">Thema</span>
+          <button
+            v-for="option in themes"
+            :key="option.value"
+            type="button"
+            class="theme-switch__option"
+            :aria-pressed="theme === option.value"
+            @click="theme = option.value"
+          >
+            {{ option.label }}
+          </button>
+        </span>
         <a href="#top">Terug naar boven ↑</a>
       </p>
     </div>
@@ -30,6 +50,7 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
+  background: var(--c-bg);
   border-top: 1px solid var(--c-line);
   padding-block: clamp(2rem, 4vw, 3rem);
   font-size: 0.95rem;
@@ -78,6 +99,40 @@ const year = new Date().getFullYear()
   gap: 0.5rem 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--c-line);
+}
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.theme-switch__label {
+  margin-right: 0.5rem;
+}
+
+.theme-switch__option {
+  min-height: 2.25rem;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--c-line);
+  border-radius: 999px;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.theme-switch__option:hover {
+  border-color: var(--c-line-strong);
+  color: var(--c-text);
+}
+
+.theme-switch__option[aria-pressed='true'] {
+  border-color: var(--c-text);
+  background: var(--c-text);
+  color: var(--c-bg);
 }
 
 @media (min-width: 62rem) {

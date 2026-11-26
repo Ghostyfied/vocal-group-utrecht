@@ -8,7 +8,7 @@ const { contact } = site
 </script>
 
 <template>
-  <section id="contact" class="contact">
+  <section id="contact" class="contact on-dark">
     <div class="contact__media" aria-hidden="true">
       <img
         :src="lights1100"
@@ -46,6 +46,8 @@ const { contact } = site
   position: relative;
   padding-top: clamp(14rem, 34vw, 30rem);
   padding-bottom: clamp(4rem, 8vw, 7rem);
+  border-radius: var(--sheet-radius) var(--sheet-radius) 0 0;
+  background: var(--c-bg);
   overflow: hidden;
   isolation: isolate;
 }

@@ -1,21 +1,27 @@
 /* ------------------------------------------------------------------
    Design tokens
-   Palette lifted from the stage photos: black stage, burgundy and red
-   wardrobe, warm tungsten light.
+   Palette lifted from the stage photos: burgundy and red wardrobe, warm
+   tungsten light, black stage.
+
+   Light theme (default): warm paper with the photo sections as dark
+   "stage" islands. Dark theme: the whole page is the stage.
 ------------------------------------------------------------------ */
 :root {
-  --c-bg: #0c0909;
-  --c-bg-raised: #171112;
-  --c-bg-sunken: #080606;
-  --c-line: rgb(244 236 226 / 0.13);
-  --c-line-strong: rgb(244 236 226 / 0.28);
-  --c-text: #f4ece2;
-  --c-text-muted: #b5a89e;
-  --c-accent: #c8302b; /* fills — cream text on top passes AA */
-  --c-accent-hover: #dd3d36;
-  --c-accent-bright: #f0604f; /* text and lines on the dark background */
+  color-scheme: light;
+
+  --c-bg: #f7f0e6;
+  --c-bg-raised: #fffaf2;
+  --c-bg-sunken: #efe5d7;
+  --c-line: rgb(36 20 22 / 0.13);
+  --c-line-strong: rgb(36 20 22 / 0.3);
+  --c-text: #241416;
+  --c-text-muted: #6b5a56;
+  --c-accent: #c8302b; /* fills — --c-on-accent text on top passes AA */
+  --c-accent-hover: #ae2621;
+  --c-accent-bright: #b3261f; /* accent-coloured text and lines on the page background */
+  --c-on-accent: #f7f0e6;
   --c-burgundy: #4a141c;
-  --c-glow: #f7c873;
+  --c-glow: #c8302b;
 
   --font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Instrument Sans Variable', 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -33,8 +39,31 @@
   --header-height: 4.5rem;
   --radius: 1.25rem;
   --radius-small: 0.75rem;
+  --sheet-radius: clamp(1.5rem, 3vw, 2.5rem);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark values: the whole page in the dark theme, and — in either theme —
+   any section marked .on-dark (hero, contact, footer, the "zing mee" panel). */
+:root[data-theme='dark'],
+.on-dark {
+  color-scheme: dark;
+
+  --c-bg: #0c0909;
+  --c-bg-raised: #171112;
+  --c-bg-sunken: #080606;
+  --c-line: rgb(244 236 226 / 0.13);
+  --c-line-strong: rgb(244 236 226 / 0.28);
+  --c-text: #f4ece2;
+  --c-text-muted: #b5a89e;
+  --c-accent-hover: #dd3d36;
+  --c-accent-bright: #f0604f;
+  --c-glow: #f7c873;
+}
+
+.on-dark {
+  color: var(--c-text);
 }
 
 /* ------------------------------------------------------------------
@@ -57,6 +86,9 @@ body {
   margin: 0;
   background: var(--c-bg);
   color: var(--c-text);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.65;
@@ -124,7 +156,7 @@ button {
 
 ::selection {
   background: var(--c-accent);
-  color: var(--c-text);
+  color: var(--c-on-accent);
 }
 
 :focus-visible {
@@ -190,8 +222,8 @@ button {
   border-radius: 50%;
   background: var(--c-glow);
   box-shadow:
-    0 0 0.5rem 0.1rem rgb(247 200 115 / 0.75),
-    0 0 1.6rem 0.4rem rgb(247 200 115 / 0.3);
+    0 0 0.5rem 0.1rem color-mix(in srgb, var(--c-glow) 75%, transparent),
+    0 0 1.6rem 0.4rem color-mix(in srgb, var(--c-glow) 30%, transparent);
 }
 
 .eyebrow {
@@ -251,7 +283,7 @@ button {
 
 .btn--primary {
   background: var(--c-accent);
-  color: var(--c-text);
+  color: var(--c-on-accent);
 }
 
 .btn--primary:hover {
@@ -260,7 +292,7 @@ button {
 
 .btn--ghost {
   border-color: var(--c-line-strong);
-  background: rgb(12 9 9 / 0.35);
+  background: color-mix(in srgb, var(--c-bg) 35%, transparent);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }

@@ -3,6 +3,7 @@ import SiteHeader from './components/SiteHeader.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import RepertoireMarquee from './components/RepertoireMarquee.vue'
+import VideoSection from './components/VideoSection.vue'
 import ConductorSection from './components/ConductorSection.vue'
 import AgendaSection from './components/AgendaSection.vue'
 import BookingSection from './components/BookingSection.vue'
@@ -18,6 +19,7 @@ import SiteFooter from './components/SiteFooter.vue'
     <HeroSection />
     <AboutSection />
     <RepertoireMarquee />
+    <VideoSection />
     <ConductorSection />
     <AgendaSection />
     <BookingSection />

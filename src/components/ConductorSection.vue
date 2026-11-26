@@ -71,7 +71,7 @@ const initials = computed(() =>
   width: 100%;
   height: 100%;
   padding: clamp(1.25rem, 3vw, 2rem);
-  background: linear-gradient(160deg, var(--c-burgundy) 0%, #230a0e 55%, var(--c-bg-sunken) 100%);
+  background: linear-gradient(160deg, var(--c-burgundy) 0%, #230a0e 55%, #120708 100%);
 }
 
 .portrait__glow {

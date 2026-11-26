@@ -12,4 +12,8 @@ defineProps<{ name: string }>()
     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.75" />
     <path d="M13 21v-7.5h2.5l.4-2.8H13V9.2c0-.9.4-1.5 1.5-1.5H16V5.2c-.4-.1-1.2-.2-2-.2-2.2 0-3.7 1.3-3.7 3.8v1.900H8v2.8h2.3V21" fill="currentColor" />
   </svg>
+  <svg v-else-if="name === 'YouTube'" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect x="2.5" y="5.5" width="19" height="13" rx="4" stroke="currentColor" stroke-width="1.75" />
+    <path d="M10.2 9.2v5.6l4.8-2.8z" fill="currentColor" />
+  </svg>
 </template>
