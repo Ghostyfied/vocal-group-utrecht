@@ -48,7 +48,6 @@ const embedUrl = computed(
       </div>
 
       <div class="video__foot">
-        <p class="video__note">De video wordt bij het afspelen geladen vanaf YouTube.</p>
         <a class="video__channel" :href="video.channelUrl" target="_blank" rel="noopener">
           {{ video.channelLabel }}
           <ArrowIcon />
@@ -147,16 +146,8 @@ const embedUrl = computed(
 
 .video__foot {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem 2rem;
+  justify-content: flex-end;
   margin-top: 1rem;
-}
-
-.video__note {
-  font-size: var(--fs-small);
-  color: var(--c-text-muted);
 }
 
 .video__channel {

@@ -26,7 +26,7 @@ All texts, links and agenda items live in one file: [`src/content/site.ts`](src/
 
 - **Agenda** — add an entry to `agenda.items` with a `date` in `YYYY-MM-DD` form. Shows are sorted automatically and move to "Eerder" by themselves once the date has passed. Remove the entries marked `placeholder: true` when real dates are in.
 - **Vacancy** ("Gezocht: lage bas") — edit `vacancy.voice`, or set `vacancy.open` to `false` once the spot is filled: the call-out in the hero disappears and "Zing mee" switches to the general text in `join.closed`.
-- **Video** — set `video.youtubeId` to the part after `youtu.be/` in the link. The player only connects to YouTube after the visitor presses play.
+- **Video** — set `video.youtubeId` to the part after `youtu.be/` in the link. The player only connects to YouTube once the visitor presses play.
 - **Conductor portrait** — import an image and set `conductor.photo`; until then a monogram tile is shown.
 - **Photos** — optimised WebP files in `src/assets/images/`, referenced from the section components.
 
